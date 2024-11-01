@@ -1,0 +1,35 @@
+name: Build iOS App
+
+on:
+  push:
+    branches:
+      - main  # Chỉnh sửa branch phù hợp nếu cần
+
+jobs:
+  build:
+    runs-on: macos-latest  # Chạy trên macOS để xây dựng ứng dụng iOS
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Unity
+      uses: game-ci/unity-builder@v2
+      with:
+        version: 2022.3.38f1  # Chỉnh sửa phiên bản Unity phù hợp
+        targetPlatform: iOS
+
+    - name: Build Xcode project
+      run: |
+        cd YourUnityProject  # Thay thế với đường dẫn đến dự án Unity
+        ./gradlew build
+
+    - name: Export IPA
+      run: |
+        xcodebuild -exportArchive -archivePath ./build/Unity-Iphone.xcarchive -exportOptionsPlist ./Info.plist -exportPath ./build
+
+    - name: Upload IPA
+      uses: actions/upload-artifact@v2
+      with:
+        name: YourApp.ipa
+        path: ./build/YourApp.ipa
