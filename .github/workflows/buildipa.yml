@@ -15,7 +15,7 @@ jobs:
 
     - name: Install Dependencies (nếu có)
       run: |
-        cd iOSKPAH  # Đường dẫn đến dự án Xcode
+        #cd iOSKPAH  # Đường dẫn đến dự án Xcode
         # Nếu cần cài đặt dependencies, thêm lệnh ở đây
 
     - name: Build IPA
