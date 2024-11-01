@@ -21,7 +21,7 @@ jobs:
     - name: Build IPA
       run: |
         xcodebuild -workspace YourWorkspace.xcworkspace -scheme YourScheme -archivePath ./build/YourApp.xcarchive archive
-        xcodebuild -exportArchive -archivePath ./build/Unity-Iphone.xcarchive -exportOptionsPlist ./Info.plist -exportPath ./build
+        xcodebuild -exportArchive -archivePath ./build/Unity-iPhone.xcodeproj -exportOptionsPlist ./Info.plist -exportPath ./build
 
     - name: Upload IPA
       uses: actions/upload-artifact@v3
