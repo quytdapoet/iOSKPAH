@@ -20,7 +20,7 @@ jobs:
 
     - name: Build IPA
       run: |
-        xcodebuild -workspace Unity-iPhone.xcodeproj -scheme YourScheme -archivePath ./build/Unity-iPhone.xcodeproj archive
+        xcodebuild -project Unity-iPhone.xcodeproj -scheme YourScheme -archivePath ./build/Unity-iPhone.xcodeproj archive
         xcodebuild -exportArchive -archivePath ./build/Unity-iPhone.xcodeproj -exportOptionsPlist ./Info.plist -exportPath ./build
 
     - name: Upload IPA
